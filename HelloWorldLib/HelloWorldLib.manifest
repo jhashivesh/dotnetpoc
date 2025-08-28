@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <assemblyIdentity
+    version="1.0.0.0"
+    processorArchitecture="amd64"
+    name="HelloWorldLib"
+    type="win32"
+  />
+  
+  <description>Hello World .NET Core COM Library</description>
+  
+  <dependency>
+    <dependentAssembly>
+      <assemblyIdentity
+        type="win32"
+        name="Microsoft.Windows.Common-Controls"
+        version="6.0.0.0"
+        processorArchitecture="*"
+        publicKeyToken="6595b64144ccf1df"
+        language="*"
+      />
+    </dependentAssembly>
+  </dependency>
+  
+  <comInterfaceExternalProxyStub
+    name="HelloWorldLib.HelloWorldService"
+    iid="{12345678-1234-1234-1234-123456789012}"
+    proxyStubClsid32="{00020424-0000-0000-C000-000000000046}"
+    tlbid="{87654321-4321-4321-4321-210987654321}"
+  />
+  
+  <file name="HelloWorldLib.comhost.dll">
+    <comClass
+      clsid="{12345678-1234-1234-1234-123456789012}"
+      progid="HelloWorldLib.HelloWorldService"
+      threadingModel="Both"
+      description="Hello World Service COM Class"
+    />
+  </file>
+</assembly>

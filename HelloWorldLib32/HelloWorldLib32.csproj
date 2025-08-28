@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PlatformTarget>x86</PlatformTarget>
+    <EnableComHosting>true</EnableComHosting>
+    <ComVisible>true</ComVisible>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DefineConstants>X86</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- No additional packages needed for .NET Core COM interop -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Shared\HelloWorldService.cs" />
+  </ItemGroup>
+
+</Project>
