@@ -1,20 +1,17 @@
+using System;
 using System.Runtime.InteropServices;
+using HelloWorldLib.Interop;
 
 namespace HelloWorldLib
 {
     /// <summary>
-    /// COM-visible Hello World service that can be compiled for both 32-bit and 64-bit
+    /// 64-bit COM-visible Hello World service
     /// </summary>
     [ComVisible(true)]
-#if X86
-    [Guid("87654321-4321-4321-4321-210987654321")]
-    [ProgId("HelloWorldLib.HelloWorldService")]
-#else
     [Guid("12345678-1234-1234-1234-123456789012")]
-    [ProgId("HelloWorldLib.HelloWorldService")]
-#endif
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    public class HelloWorldService
+    [ProgId("HelloWorldLib.HelloWorldService64")]
+    [ClassInterface(ClassInterfaceType.None)]
+    public class HelloWorldService : IHelloWorldService
     {
         /// <summary>
         /// Gets a simple hello world message
@@ -22,11 +19,7 @@ namespace HelloWorldLib
         /// <returns>Hello World message</returns>
         public string GetHelloWorld()
         {
-#if X86
-            return "Hello World from .NET Core COM Wrapper (32-bit)!";
-#else
             return "Hello World from .NET Core COM Wrapper (64-bit)!";
-#endif
         }
 
         /// <summary>
@@ -36,11 +29,7 @@ namespace HelloWorldLib
         /// <returns>Personalized greeting</returns>
         public string GetGreeting(string name)
         {
-#if X86
-            return $"Hello {name}! Welcome to .NET Core COM Interop (32-bit)!";
-#else
             return $"Hello {name}! Welcome to .NET Core COM Interop (64-bit)!";
-#endif
         }
 
         /// <summary>
@@ -78,11 +67,7 @@ namespace HelloWorldLib
         /// <returns>Platform architecture information</returns>
         public string GetPlatformInfo()
         {
-#if X86
-            return $"32-bit .NET Core on {Environment.OSVersion.Platform}";
-#else
             return $"64-bit .NET Core on {Environment.OSVersion.Platform}";
-#endif
         }
     }
 }

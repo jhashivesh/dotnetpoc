@@ -3,13 +3,13 @@
   <assemblyIdentity
     version="1.0.0.0"
     processorArchitecture="x86"
-    name="HelloWorldLib32"
+    name="TestClient32Bit"
     type="win32"
   />
   
-  <description>Hello World .NET Core COM Library (32-bit)</description>
+  <description>32-bit COM Test Client</description>
   
-  <!-- COM Class Definition -->
+  <!-- Registration-free COM activation -->
   <file name="HelloWorldLib32.comhost.dll">
     <comClass
       clsid="{87654321-4321-4321-4321-210987654321}"

@@ -4,20 +4,20 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <OutputType>Exe</OutputType>
-    <ApplicationManifest>TestClient32Bit.manifest</ApplicationManifest>
+    <ApplicationManifest>TestClient64.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HelloWorldLib.Interop\HelloWorldLib.Interop.csproj" />
-    <ProjectReference Include="..\HelloWorldLib32\HelloWorldLib32.csproj" />
+    <ProjectReference Include="..\HelloWorldLib\HelloWorldLib.csproj" />
   </ItemGroup>
 
   <!-- Copy COM host DLLs to output directory -->
   <ItemGroup>
-    <Content Include="..\HelloWorldLib32\bin\Release\net8.0\HelloWorldLib32.comhost.dll">
-      <Link>HelloWorldLib32.comhost.dll</Link>
+    <Content Include="..\HelloWorldLib\bin\Release\net8.0\HelloWorldLib.comhost.dll">
+      <Link>HelloWorldLib.comhost.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

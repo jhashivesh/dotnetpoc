@@ -4,13 +4,13 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using HelloWorldLib.Interop;
 
-namespace TestClient32Bit
+namespace TestClient64
 {
     class Program
     {
-        // 32-bit COM component identifiers from manifest
-        private const string PROG_ID = "HelloWorldLib.HelloWorldService32";
-        private static Guid CLSID = new Guid("87654321-4321-4321-4321-210987654321");
+        // 64-bit COM component identifiers from manifest
+        private const string PROG_ID = "HelloWorldLib.HelloWorldService64";
+        private static Guid CLSID = new Guid("12345678-1234-1234-1234-123456789012");
         private static Guid IID_IHelloWorldService = new Guid("11111111-1111-1111-1111-111111111111");
 
         // COM API imports for registration-free COM activation
@@ -33,7 +33,7 @@ namespace TestClient32Bit
 
         static void Main(string[] args)
         {
-            Console.WriteLine("=== EXPERT .NET COM INTEROPERABILITY TEST (32-bit) ===");
+            Console.WriteLine("=== EXPERT .NET COM INTEROPERABILITY TEST (64-bit) ===");
             Console.WriteLine($"Platform: {Environment.OSVersion}");
             Console.WriteLine($"Process Architecture: {RuntimeInformation.ProcessArchitecture}");
             Console.WriteLine($"Framework: {Environment.Version}");
@@ -224,7 +224,7 @@ namespace TestClient32Bit
             Console.WriteLine($"  ProgID: {PROG_ID}");
             Console.WriteLine($"  CLSID: {CLSID}");
             Console.WriteLine($"  IID: {IID_IHelloWorldService}");
-            Console.WriteLine($"  Manifest: TestClient32Bit.manifest");
+            Console.WriteLine($"  Manifest: TestClient64.manifest");
 
             // Use CoCreateInstance for registration-free COM activation
             try
@@ -281,12 +281,12 @@ namespace TestClient32Bit
                 Console.WriteLine($"    ✓ GetHelloWorld(): {result1}");
 
                 // Test 2: Hello with name
-                string result2 = service.GetGreeting("32-bit Test Client");
-                Console.WriteLine($"    ✓ GetGreeting('32-bit Test Client'): {result2}");
+                string result2 = service.GetGreeting("64-bit Test Client");
+                Console.WriteLine($"    ✓ GetGreeting('64-bit Test Client'): {result2}");
 
                 // Test 3: Add numbers
-                int result3 = service.Add(10, 20);
-                Console.WriteLine($"    ✓ Add(10, 20): {result3}");
+                int result3 = service.Add(100, 200);
+                Console.WriteLine($"    ✓ Add(100, 200): {result3}");
 
                 // Test 4: Get current time
                 DateTime result4 = service.GetCurrentTime();
@@ -316,12 +316,12 @@ namespace TestClient32Bit
                 Console.WriteLine($"    ✓ GetHelloWorld(): {result1}");
 
                 // Test 2: Hello with name
-                object result2 = comType.InvokeMember("GetGreeting", BindingFlags.InvokeMethod, null, comObject, new object[] { "32-bit Test Client" });
-                Console.WriteLine($"    ✓ GetGreeting('32-bit Test Client'): {result2}");
+                object result2 = comType.InvokeMember("GetGreeting", BindingFlags.InvokeMethod, null, comObject, new object[] { "64-bit Test Client" });
+                Console.WriteLine($"    ✓ GetGreeting('64-bit Test Client'): {result2}");
 
                 // Test 3: Add numbers
-                object result3 = comType.InvokeMember("Add", BindingFlags.InvokeMethod, null, comObject, new object[] { 10, 20 });
-                Console.WriteLine($"    ✓ Add(10, 20): {result3}");
+                object result3 = comType.InvokeMember("Add", BindingFlags.InvokeMethod, null, comObject, new object[] { 100, 200 });
+                Console.WriteLine($"    ✓ Add(100, 200): {result3}");
 
                 // Test 4: Get current time
                 object result4 = comType.InvokeMember("GetCurrentTime", BindingFlags.InvokeMethod, null, comObject, null);

@@ -6,17 +6,15 @@
     <Nullable>enable</Nullable>
     <PlatformTarget>x86</PlatformTarget>
     <EnableComHosting>true</EnableComHosting>
+    <GenerateComHost>true</GenerateComHost>
     <ComVisible>true</ComVisible>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DefineConstants>X86</DefineConstants>
+    <AssemblyManifest>HelloWorldLib32.manifest</AssemblyManifest>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- No additional packages needed for .NET Core COM interop -->
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="..\Shared\HelloWorldService.cs" />
+    <ProjectReference Include="..\HelloWorldLib.Interop\HelloWorldLib.Interop.csproj" />
   </ItemGroup>
 
 </Project>
